@@ -9,4 +9,5 @@
 
 ## 参考
 [じゃんけんAI (篠本滋先生)](https://s-shinomoto.com/janken/japanese.html) と[C試作プログラム](https://s-shinomoto.com/janken/c.html)
+
 perceptron_model.pyの中身の計算は引用元のコードを参考に作っています．
