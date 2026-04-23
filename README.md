@@ -1,6 +1,9 @@
 # JankenAI
 プレイヤーの次の手を予測するじゃんけんAIを作ってみました．
 
+## デモ
+<img width="799" height="628" alt="Image" src="https://github.com/user-attachments/assets/f9f462e3-69e8-46a9-86a0-7ff09e831b1c" />
+
 ## ファイルの説明
 * markov_model.py - マルコフ連鎖を応用したじゃんけんの予測モデル
 * markov_jankenGUI - ↑のtkinter実装版．プレイ画面と勝率推移を表示
