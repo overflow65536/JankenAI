@@ -2,7 +2,7 @@
 プレイヤーの次の手を予測するじゃんけんAIを作ってみました．
 
 ## デモ
-<img width="799" height="628" alt="Image" src="https://github.com/user-attachments/assets/f9f462e3-69e8-46a9-86a0-7ff09e831b1c" />
+<img width="400" height="313" alt="Image" src="https://github.com/user-attachments/assets/13cf633e-1975-4020-ae22-ad1f06e895d6" />
 
 ## ファイルの説明
 * markov_model.py - マルコフ連鎖を応用したじゃんけんの予測モデル
