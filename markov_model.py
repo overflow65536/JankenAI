@@ -1,7 +1,5 @@
 import random
 import sys
-import tkinter as tk
-import random
 
 #累計分布 (not正則分布)
 distribution = [[0, 0, 0], 
@@ -18,13 +16,13 @@ def predict(prev, d):
     # prev = 0 or 1 or 2
     s = sum(d[prev])
     r = random.uniform(0, s)
-    if r < distribution[prev][0]:
+    if r < d[prev][0]:
         # プレイヤーが出しやすい手 = グー(0)
         pred = 0
-    elif r < distribution[prev][0] + distribution[prev][1]:
+    elif r < d[prev][0] + d[prev][1]:
         # プレイヤーが出しやすい手 = チョキ(1)
         pred = 1
-    else:  # r < distribution[prev][0] + distribution[prev][1] + distribution[prev][2]
+    else:  # r < d[prev][0] + d[prev][1] + d[prev][2]
         # プレイヤーが出しやすい手 = パー(2)
         pred = 2
     
@@ -73,6 +71,6 @@ while True:
     #分布を更新
     if total != 0:
         distribution[prev][player] += 1
-        prev = player
+    prev = player
 
     print(f"勝率： 勝ち {win}  負け {lose}  あいこ {draw} / 計{total}回")

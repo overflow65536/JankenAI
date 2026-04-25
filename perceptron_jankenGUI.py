@@ -81,12 +81,15 @@ class App:
         self.label = tk.Label(top, text="じゃんけん！")
         self.label.grid(row=0, column=0, columnspan=3, pady=5)
 
-        tk.Button(top, text="グー", image=self.rock, command=lambda: self.play(0)).grid(row=1, column=0, sticky="ew")
-        tk.Button(top, text="チョキ", image=self.scissors, command=lambda: self.play(1)).grid(row=1, column=1, sticky="ew")
-        tk.Button(top, text="パー", image=self.paper, command=lambda: self.play(2)).grid(row=1, column=2, sticky="ew")
+        self.ai_hand_label = tk.Label(top, relief=tk.SOLID, bd=3)
+        self.ai_hand_label.grid(row=1, column=0, columnspan=3, pady=10)
+
+        tk.Button(top, image=self.rock, command=lambda: self.play(0)).grid(row=2, column=0, sticky="ew")
+        tk.Button(top, image=self.scissors, command=lambda: self.play(1)).grid(row=2, column=1, sticky="ew")
+        tk.Button(top, image=self.paper, command=lambda: self.play(2)).grid(row=2, column=2, sticky="ew")
 
         self.result_label = tk.Label(top, text="")
-        self.result_label.grid(row=2, column=0, columnspan=3)
+        self.result_label.grid(row=3, column=0, columnspan=3)
 
         # --- 戦績グラフ ---
         bottom = tk.Frame(root)
@@ -112,7 +115,8 @@ class App:
             result = "負け"
             self.lose += 1
 
-        self.result_label.config(text=f"AI:{com} → {result}")
+        img_map = [self.rock, self.scissors, self.paper]
+        self.ai_hand_label.config(image=img_map[com])
 
         # 学習
         self.ai.update(player, v)

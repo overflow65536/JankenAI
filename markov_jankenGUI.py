@@ -3,8 +3,6 @@ from PIL import Image, ImageTk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.pyplot as plt
 import random
-import sys
-import random
 
 class Markov():
     def __init__(self):
@@ -65,6 +63,7 @@ class App:
         root.columnconfigure(0, weight=1)
 
         # --- プレイ画面UI ---
+        # --- プレイ画面UI ---
         top = tk.Frame(root)
         top.grid(row=0, column=0, sticky="ew")
         top.columnconfigure((0,1,2), weight=1)
@@ -72,17 +71,15 @@ class App:
         self.label = tk.Label(top, text="じゃんけん！")
         self.label.grid(row=0, column=0, columnspan=3, pady=5)
 
-        self.player_label = tk.Label(width=100, height=100, image=self.rock)
-        self.ai_label = tk.Label(width=100, height=100, image=self.paper)
-        self.player_label.grid(row=1, column=0, sticky="ew")
-        self.ai_label.grid(row=1, column=, sticky="ew")
+        self.ai_hand_label = tk.Label(top, relief=tk.SOLID, bd=3)
+        self.ai_hand_label.grid(row=1, column=0, columnspan=3, pady=10)
 
-        tk.Button(top, text="グー", image=self.rock, command=lambda: self.play(0)).grid(row=1, column=0, sticky="ew")
-        tk.Button(top, text="チョキ", image=self.scissors, command=lambda: self.play(1)).grid(row=1, column=1, sticky="ew")
-        tk.Button(top, text="パー", image=self.paper, command=lambda: self.play(2)).grid(row=1, column=2, sticky="ew")
+        tk.Button(top, image=self.rock, command=lambda: self.play(0)).grid(row=2, column=0, sticky="ew")
+        tk.Button(top, image=self.scissors, command=lambda: self.play(1)).grid(row=2, column=1, sticky="ew")
+        tk.Button(top, image=self.paper, command=lambda: self.play(2)).grid(row=2, column=2, sticky="ew")
 
         self.result_label = tk.Label(top, text="")
-        self.result_label.grid(row=2, column=0, columnspan=3)
+        self.result_label.grid(row=3, column=0, columnspan=3)
 
         # --- 戦績グラフ ---
         bottom = tk.Frame(root)
@@ -108,12 +105,13 @@ class App:
             result = "負け"
             self.lose += 1
 
-        self.result_label.config(text=f"AI:{com} → {result}")
+        img_map = [self.rock, self.scissors, self.paper]
+        self.ai_hand_label.config(image=img_map[com])
 
         #分布を更新
         if self.total != 0:
             self.ai.distribution[self.ai.prev][player] += 1
-            self.ai.prev = player
+        self.ai.prev = player
 
         # 勝率更新
         self.total = self.win + self.lose + self.draw

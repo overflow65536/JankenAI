@@ -1,7 +1,4 @@
-import tkinter as tk
-from PIL import Image, ImageTk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib.pyplot as plt
+import sys
 
 N = 5  #記憶する手数
 # x:入力層の時系列表現, w:重み, b:バイアス(切片), v:出力層
